@@ -1,0 +1,21 @@
+management:
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include:  health, threaddump, heapdump, prometheus
+      path-mapping:
+        health: manage/health
+        threaddump: manage/threaddump
+        heapdump: manage/heapdump
+        prometheus: metrics
+  endpoint:
+    health:
+      show-details: always
+
+sftp:
+  port: 2222
+  timeout: 10_000 # ms
+  synchronizer:
+    polling-interval: PT30M
+    local-directory: /tmp/extractions
